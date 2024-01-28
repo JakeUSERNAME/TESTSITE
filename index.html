@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Background Clock</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            transition: background-color 5s ease; /* Smooth transition for background color change */
+        }
+        
+        #clock {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">Loading...</div>
+
+    <script>
+        function updateTime() {
+            var date = new Date();
+            var hours = date.getUTCHours() - 6; // CST offset is -6 hours from UTC
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+
+            hours = (hours < 10 ? "0" : "") + hours;
+            minutes = (minutes < 10 ? "0" : "") + minutes;
+            seconds = (seconds < 10 ? "0" : "") + seconds;
+
+            var timeString = hours + ":" + minutes + ":" + seconds;
+            document.getElementById("clock").textContent = timeString;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        setTimeout(function() {
+            document.body.style.backgroundColor = "white"; // Fading to white
+            setTimeout(function() {
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUIcmlja3JvbGw%3D&ab_channel=RickAstley";
+            }, 5000); // Delay before redirecting
+        }, 10000); // 10 seconds before background change
+    </script>
+</body>
+</html>
